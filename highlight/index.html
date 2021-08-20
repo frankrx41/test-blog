@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>contains demo</title>
+  <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+</head>
+<body>
+
+<pre>
+<code class="cpp">int main()
+{
+    printf("hello world!");
+}
+</code>
+</pre>
+
+<pre><code class="javascript">$(document).ready(function() {
+    $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+    });
+});
+</code></pre>
+
+<!-- <script>hljs.highlightAll();</script> -->
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>
