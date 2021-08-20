@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>contains demo</title>
+  <script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+</head>
+<body>
+
+invitation-code:
+<span id='test1'></span>
+<br/>
+
+dark-mode:
+<span id='test2'></span>
+<br/>
+
+font-size:
+<span id='test3'></span>
+<br/>
+
+<script>
+$(document).ready(function(){
+    if( !$.cookie('invitation-code') )
+    {
+        $.cookie('invitation-code', '123d0a9u');  // 创建 cookie
+    }
+    name1 = $.cookie('invitation-code');       // 读取 cookie
+    $("#test1").text(name1);
+
+    if( !$.cookie('theme') )
+    {
+        $.cookie('theme', 'dark');
+    }
+    name2 = $.cookie('theme');
+    $("#test2").text(name2);
+
+    if( !$.cookie('font-size') )
+    {
+        $.cookie('font-size', '2');
+    }
+    name3 = $.cookie('font-size');
+    $("#test3").text(name3);
+});
+</script>
+
+</body>
+</html>
