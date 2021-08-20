@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>contains demo</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+
+<input id="key" type="text" />
+<input type="button" onclick=DecryptText() />
+<br/>
+<div id="encryption">hello world</div>
+<br/>
+<hr>
+
+<script>
+let text = $("#encryption").text();
+const secretKey = '9d4qwd16';
+let decrypted = CryptoJS.AES.encrypt(text, secretKey)
+$("#encryption").text(decrypted)
+
+function DecryptText()
+{
+    let text = $("#encryption").text();
+    let key = $('#key').val();
+    key = key.toString();
+    let decrypted = CryptoJS.AES.decrypt(text, key)
+    let string = decrypted.toString(CryptoJS.enc.Utf8)
+    $("#encryption").text(string)
+}
+
+</script>
+
+</body>
+</html>
