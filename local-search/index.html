@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>contains demo</title>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+
+<input id="search" type="text" />
+<br/>
+<div id="find"></div>
+<br/>
+<hr>
+
+<script>
+$.ajax({
+  url: "/doc-list.txt",
+}).done(function(data) {
+  var htmls = data.split("\r\n")
+  all_find = [];
+  htmls.forEach(element => {
+    if( element != "" )
+    {
+      $.ajax({
+        url: "/public/" + element,
+        //context: document.body
+      }).done(function(data) {
+        all_find.push({html: element, text: data})
+        console.log(all_find)
+      })
+    }
+  });
+});
+
+$("#search").keyup(
+  function(){
+    var input = $("#search").val();
+    if( input != "" )
+    {
+      var text = "";
+      $.each(all_find, function(index) {
+          if( all_find[index].text.search(input) >= 0 )
+          {
+            text += all_find[index].html;
+            text += "<br/>"
+            text += all_find[index].text;
+            text += "<br/><br/>"
+          }
+      });
+      $('#find').html(text);
+    }
+    else{
+      $('#find').html("");
+    }
+  }
+);
+</script>
+
+</body>
+</html>
